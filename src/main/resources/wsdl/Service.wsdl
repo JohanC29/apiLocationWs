@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wsdl:definitions
+        name="Service"
+        targetNamespace="http://localhost/Service/wsdl"
+        xmlns:tns="http://localhost/Service/wsdl"
+        xmlns:ns1="http://localhost/Service/schema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost/Service/wsdl">
+            <xsd:import namespace="http://localhost/Service/schema" schemaLocation="Service.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetLocationRequest">
+        <wsdl:part element="ns1:GetLocationRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="GetLocationResponse">
+        <wsdl:part element="ns1:GetLocationResponse" name="parameters"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetLocationUniqueRequest">
+        <wsdl:part element="ns1:GetLocationUniqueRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="GetLocationUniqueResponse">
+        <wsdl:part element="ns1:GetLocationUniqueResponse" name="parameters"/>
+    </wsdl:message>
+
+    <wsdl:portType name="ServicePort">
+        <wsdl:operation name="GetLocation">
+            <wsdl:input message="tns:GetLocationRequest"/>
+            <wsdl:output message="tns:GetLocationResponse"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetLocationUnique">
+            <wsdl:input message="tns:GetLocationUniqueRequest"/>
+            <wsdl:output message="tns:GetLocationUniqueResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="ServiceSOAPBinding" type="tns:ServicePort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="GetLocation">
+            <soap:operation soapAction="http://localhost/Service/GetLocation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetLocationUnique">
+            <soap:operation soapAction="http://localhost/Service/GetLocationUnique"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="Service">
+        <wsdl:port binding="tns:ServiceSOAPBinding" name="ServiceSOAPBinding">
+            <soap:address location="http://localhost:8080/services/soap/Service"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,36 @@
+<xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://localhost/Service/schema"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="GetLocationRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="lat" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+                <xsd:element name="lng" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetLocationResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="result" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetLocationUniqueRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="latlng" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetLocationUniqueResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="result" minOccurs="1" maxOccurs="1" nillable="false" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
